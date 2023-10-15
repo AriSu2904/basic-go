@@ -13,14 +13,15 @@ func main() {
 	getInfo(toyota)
 }
 
-type CarInfo interface {
-	GetBrand() string
-	GetEngineType() string
+func getInfo(car CarInfo) {
+	brand := car.GetBrand()
+	engine := car.GetEngineType()
+	fmt.Println("Brand :", brand)
+	fmt.Println("Engine Type :", engine)
 }
 
-func getInfo(car CarInfo) {
-	fmt.Println(car.GetBrand())
-	fmt.Println(car.GetEngineType())
+type Car struct {
+	Name, Brand, Engine string
 }
 
 func (car Car) GetBrand() string {
@@ -31,6 +32,7 @@ func (car Car) GetEngineType() string {
 	return car.Engine
 }
 
-type Car struct {
-	Name, Brand, Engine string
+type CarInfo interface {
+	GetBrand() string
+	GetEngineType() string
 }
